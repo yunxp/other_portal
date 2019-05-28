@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { getUsers } from '@/api/user'
+import { getUsers } from '@/api/sso/user'
 import permission from '@/directive/permission/index.js' // 权限判断指令
 import checkPermission from '@/utils/permission' // 权限判断函数
 import Pagination from '@/components/Pagination' // Secondary package based on el-pagination
