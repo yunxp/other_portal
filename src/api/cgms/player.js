@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 
-export function getUsers(params) {
+export function queryPlayerInfo(data) {
   return request({
-    url: '/sso/user/search',
+    url: '/cgms/query_player_info',
     method: 'post',
-    params
+    data
   })
 }

@@ -16,6 +16,13 @@ module.exports = {
         pathRewrite: {
           '^/sso' : ''
         }
+      },
+      '/cgms': {
+        target: 'http://localhost:7001',
+        changeOrigin: true, // 允许跨域
+        pathRewrite: {
+          '^/cgms': ''
+        }
       }
     },
 

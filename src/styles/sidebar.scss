@@ -1,4 +1,12 @@
 #app {
+  .header {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background: #f8f8f8;
+  }
 
   // 主体区域 Main container
   .main-container {
@@ -6,6 +14,7 @@
     transition: margin-left .28s;
     margin-left: $sideBarWidth;
     position: relative;
+    top: 50px;
   }
 
   // 侧边栏 Sidebar container
@@ -20,6 +29,7 @@
     left: 0;
     z-index: 1001;
     overflow: hidden;
+    padding-top: 50px;
 
     //reset element-ui css
     .horizontal-collapse-transition {

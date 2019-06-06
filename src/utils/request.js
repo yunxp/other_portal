@@ -33,9 +33,9 @@ service.interceptors.response.use(
     const res = response.data
     if (res.error_code !== 'OK') {
       Message({
-        message: res.message,
+        message: res.message || res.error_msg,
         type: 'error',
-        duration: 5 * 1000
+        duration: 2000
       })
 
       // 50008:非法的token; 50012:其他客户端登录了;  50014:Token 过期了;
@@ -62,9 +62,9 @@ service.interceptors.response.use(
   error => {
     console.log('err' + error) // for debug
     Message({
-      message: error.message,
+      message: error.message || error.error_msg,
       type: 'error',
-      duration: 5 * 1000
+      duration: 2000
     })
     return Promise.reject(error)
   }

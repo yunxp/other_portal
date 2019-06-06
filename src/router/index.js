@@ -37,15 +37,12 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    name: 'Dashboard',
     children: [{
       path: 'dashboard',
       component: () => import('@/views/dashboard/index'),
+      name: 'Dashboard',
       meta:
-      {
-        title: 'Dashboard',
-        icon: 'example'
-      }
+      { title: 'dashboard', icon: 'dashboard' }
     }]
   },
 
@@ -54,49 +51,39 @@ export const constantRoutes = [
 
 export const asyncRoutes = [
   {
-    path: '/user',
+    path: '/player',
     component: Layout,
-    redirect: '/user/index',
-    name: 'User',
+    redirect: '/player/search',
+    name: 'fund_management',
     alwaysShow: true,
     meta: {
-      permissions: ['system_user_create', 'system_user_show'],
-      title: 'User',
+      permissions: ['player_balance_enquiry'],
+      title: 'fundManagement',
       icon: 'user'
     },
     children: [
       {
-        path: 'new',
-        name: 'Create',
-        component: () => import('@/views/user/new'),
-        meta: {
-          permissions: ['system_user_create'],
-          title: 'Create',
-          icon: 'form'
-        }
-      },
-      {
-        path: 'index',
-        name: 'List',
-        component: () => import('@/views/user/index'),
+        path: 'search',
+        name: 'Search',
+        component: () => import('@/views/player/search'),
         meta:
         {
-          permissions: ['system_user_show'],
-          title: 'List',
+          permissions: ['player_balance_enquiry'],
+          title: 'balanceEnquiry',
           icon: 'list'
-        }
-      },
-      {
-        path: 'edit/:id(\\d+)',
-        component: () => import('@/views/user/edit'),
-        name: 'Assign Role',
-        meta:
-        {
-          role: ['system_user_grant_roles'],
-          title: 'Assign Role',
-          noCache: true
         },
-        hidden: true
+        children: [
+          {
+            path: 'detail/:id_type/:id_value',
+            name: 'Detail',
+            hidden: true,
+            component: () => import('@/views/player/detail'),
+            meta:
+            {
+              permissions: ['player_balance_enquiry']
+            }
+          }
+        ]
       }
     ]
   }
